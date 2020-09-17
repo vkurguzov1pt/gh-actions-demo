@@ -1,0 +1,22 @@
+name: demo-action
+on: [ push ]
+jobs:
+    deploy:
+        name: Test Your Action
+        runs-on: ubuntu-latest
+
+
+        steps:
+        - name: Checkout
+          uses: actions/checkout@v2
+
+        - name: Configure AWS credentials from Test account
+          uses: aws-actions/configure-aws-credentials@v1
+          with:
+            aws-access-key-id: ${{ secrets.TEST_AWS_ACCESS_KEY_ID }}
+            aws-secret-access-key: ${{ secrets.TEST_AWS_SECRET_ACCESS_KEY }}
+            aws-region: us-east-1
+
+        - name: Create a bucket
+          run: |
+            aws s3api create-bucket --bucket dat-is-the-my-example-cbi-bucket-from --region us-east-1 --create-bucket-configuration LocationConstraint=us-east-1
