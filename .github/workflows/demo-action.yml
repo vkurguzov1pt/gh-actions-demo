@@ -19,4 +19,4 @@ jobs:
 
         - name: Create a VPC
           run: |
-            terraform init && terraform plan
+            terraform init && terraform plan -var-file=cbi_poc.tfvars
