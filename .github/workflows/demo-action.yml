@@ -17,6 +17,6 @@ jobs:
             aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
             aws-region: us-east-1
 
-        - name: Create a bucket
+        - name: Check if terraform is available
           run: |
-            aws s3api create-bucket --bucket dat-is-the-my-example-cbi-bucket-from-gh-actions --region us-east-1
+            whereis terraform
