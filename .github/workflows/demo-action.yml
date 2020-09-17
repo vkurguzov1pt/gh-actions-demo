@@ -19,4 +19,4 @@ jobs:
 
         - name: Create a bucket
           run: |
-            aws s3api create-bucket --bucket dat-is-the-my-example-cbi-bucket-from --region us-east-1 --create-bucket-configuration LocationConstraint=us-east-1
+            aws s3api create-bucket --bucket dat-is-the-my-example-cbi-bucket-from-gh-actions --region us-east-1
