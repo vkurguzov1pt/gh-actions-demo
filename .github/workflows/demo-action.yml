@@ -19,4 +19,4 @@ jobs:
 
         - name: Check if terraform is available
           run: |
-            whereis terraform
+            terraform version
