@@ -20,5 +20,6 @@ jobs:
         - name: Create a VPC
           run: |
             terraform init && \
+                terraform destroy -target=aws_instance.ec2_runner -auto-approve || true && \
                 terraform apply -var-file=cbi_poc.tfvars -var="github_token=${GITHUB_TOKEN}" \
-                    -auto-approve
+                -auto-approve
