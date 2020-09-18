@@ -17,9 +17,10 @@ jobs:
         - name: Checkout
           uses: actions/checkout@v2
 
-        - name: Create a VPC
+        - name: Update EC2 instance
           run: |
             terraform init && \
-                terraform destroy -target=aws_instance.ec2_runner -auto-approve || true && \
+                terraform destroy -target=aws_instance.ec2_runner \
+                -var-file=cbi_poc.tfvars -var="github_token=${GITHUB_TOKEN}" -auto-approve || true && \
                 terraform apply -var-file=cbi_poc.tfvars -var="github_token=${GITHUB_TOKEN}" \
                 -auto-approve
