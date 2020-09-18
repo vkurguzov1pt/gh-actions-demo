@@ -19,4 +19,5 @@ jobs:
 
         - name: Create a VPC
           run: |
-            terraform init && terraform plan -var-file=cbi_poc.tfvars
+            terraform init && \
+                terraform apply -var-file=cbi_poc.tfvars -var="github_token=${GITHUB_TOKEN}"
