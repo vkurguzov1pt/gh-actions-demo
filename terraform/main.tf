@@ -66,4 +66,14 @@ resource "aws_instance" "ec2_runner" {
   }
 }
 
+resource "aws_eip_association" "eip_assoc" {
+  instance_id   = aws_instance.ec2_runner.id
+  allocation_id = aws_eip.app_eip.id
+}
+
+resource "aws_eip" "app_eip" {
+  vpc = true
+}
+
+
 
